@@ -1,12 +1,9 @@
 export const state = {
-  counter: 0,
+  todos: [],
 };
 
 export const mutations = {
-  increment(state) {
-    state.counter++;
-  },
-  decrement(state) {
-    state.counter--;
+  setTodos(state, todos) {
+    state.todos = todos;
   },
 };
