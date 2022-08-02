@@ -1,11 +1,6 @@
 <template>
   <div>
-    <nav class="flex justify-center bg-gray-900 shadow-md shadow-blue-500 py-2">
-      <nuxt-link class="text-white text-2xl" to="/"> Todos </nuxt-link>
-      <nuxt-link class="text-white text-2xl ml-4" :to="{ name: 'completed' }">
-        completed
-      </nuxt-link>
-    </nav>
+    <navigation-vue />
     <div
       class="max-w-5xl flex flex-col justify-center mx-auto container px-4 sm:px-6 lg:px-8 mt-8"
     >
@@ -51,10 +46,14 @@
 </template>
 <script>
 import { mapState, mapMutations } from "vuex";
-import axios from "axios";
 import { fetchData } from "./shared";
+import navigationVue from "../components/navigation.vue";
+
 export default {
   fetch: fetchData,
+  components: {
+    navigationVue,
+  },
   computed: {
     ...mapState({
       todos: (state) => state.todos,
