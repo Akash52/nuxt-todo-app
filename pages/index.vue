@@ -52,11 +52,15 @@
 import { mapState, mapMutations } from "vuex";
 import axios from "axios";
 export default {
-  async fetch({ store }) {
-    const { data } = await axios.get(
-      "https://jsonplaceholder.typicode.com/todos"
-    );
-    store.commit("setTodos", data);
+  async fetch({ store, redirect }) {
+    try {
+      const { data } = await axios.get(
+        "https://jsonplaceholder.typicode.com/todos"
+      );
+      store.commit("setTodos", data);
+    } catch (error) {
+      redirect("/error");
+    }
   },
 
   computed: {
